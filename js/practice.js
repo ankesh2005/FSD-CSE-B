@@ -1,27 +1,20 @@
-function wait2Secons(){
-  const ms=new Date().getTime()+2000;
-  while(new Date().getTime()<ms);
-
-}
-
 function register(){
-  console.log("registering...");
-  wait2Secons();
-  console.log("registered");
+  setTimeout(()=>{
+    console.log("register end");
+  },2000)
 }
+ function login(){
+  setTimeout(()=>{
+    console.log("login");
+  },2000)
+ }
 
-function login(){
-  console.log("login");
-  wait2Secons();
-  console.log("successful");
-}
-
-function getdata(){
-  console.log("fetching...");
-  wait2Secons();
-  console.log("fetched");
-}
-
+ function getdata(){
+  setTimeout(() => {
+    console.log("fetching");
+  }, 200);
+ }
+ 
 register();
 login();
 getdata();
