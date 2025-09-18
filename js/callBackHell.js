@@ -31,7 +31,7 @@ function getData(cb) {
 
 function displayData() {
   setTimeout(() => {
-    console.log("Data displayed");
+    console.log("Data displayed🤣🤣");
   }, 1000);
 }
 

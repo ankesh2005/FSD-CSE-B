@@ -53,7 +53,6 @@ Synchronus function
 function wait2Secons(){
   const ms=new Date().getTime()+2000;
   while(new Date().getTime()<ms);
-
 }
 
 function register(){
@@ -174,3 +173,99 @@ Email sent
 User logged in
 Data retrieved
 Data displayed
+
+
+Promise:- three stages 1. resolve 2. Pending 3. reject
+
+                PROMISE
+                   |
+        _____________________
+        |          |        |
+      resolve    PENDING   Reject
+
+
+const pr=new Promise((resolve,reject)=>{
+  // resolve("register");
+  reject("error");
+});
+pr.then(()=>{
+  console.log("resgister");
+}).then(()=>{
+  console.log("login");
+  reject("error");
+}).catch((err)=>{
+  console.log(err);
+})
+
+yha dikkat hai dhyan se karo agr implement karni hai toh sahi
+
+function register() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+    console.log("user registered");
+    resolve();
+  }, 1000);
+    
+  })
+}
+
+function sendEmail() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+    console.log("Email sent");
+    resolve();
+  }, 1000);
+  })
+}
+
+function login() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      console.log("User logged in");
+      resolve();
+    }, 1000);
+  });
+}
+
+function getData() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      console.log("Data retrieved");
+      resolve();
+  }, 1000);
+})
+}
+
+function displayData() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      console.log("Data displayed🤣🤣");
+      reject("fun try error💀");
+    }, 1000);
+  });
+}
+
+// register()
+// .then(sendEmail)
+// .then(login)
+// .then(getData)
+// .then(displayData)
+
+async function f1(){
+  try{
+    await register();
+    await sendEmail();
+    await login();
+    await getData();
+    await displayData();
+  }catch(err){
+    console.log(err);
+  }
+}
+f1();
+
+
+
+EVENT HANDLING
+
+how events loop work?
