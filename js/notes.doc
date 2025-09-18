@@ -1,0 +1,271 @@
+Advanced feature of Es-6 js:
+
+1. Arrow function
+2. let and const
+3. promise
+4. destructuring
+5. spread & rest  (...)
+6. modules
+7. filter,map,reduce
+8. template literal ``
+9. fetch
+
+function f1(user="guest"){
+  console.log(`hello ${user}`);
+}
+f1();
+f1("ankesh");
+
+console:-
+hello guest
+hello ankesh
+
+const add=(a,b)=>a+b;
+function sum(a,b){
+  console.log("before return");
+  return (a+b);
+  console.log("after return")
+}
+
+console.log(sum(10,20));
+
+console:-
+before return
+30
+
+
+callback function:- 
+
+function f1(user,cb){
+  console.log(`hello ${user}`);
+  cb();
+}
+function logn(){
+  console.log("callback function");
+}
+f1("ankesh",logn);
+
+console:- 
+hello ankesh
+callback function
+
+Synchronus function
+function wait2Secons(){
+  const ms=new Date().getTime()+2000;
+  while(new Date().getTime()<ms);
+}
+
+function register(){
+  console.log("registering...");
+  wait2Secons();
+  console.log("registered");
+}
+
+function login(){
+  console.log("login");
+  wait2Secons();
+  console.log("successful");
+}
+
+function getdata(){
+  console.log("fetching...");
+  wait2Secons();
+  console.log("fetched");
+}
+
+register();
+login();
+getdata();
+
+console:-
+
+registering
+registered
+login
+successful
+fetching...
+fetched
+
+
+
+Asynchronus function
+function register(){
+  setTimeout(()=>{
+    console.log("register end");
+  },2000)
+}
+ function login(){
+  setTimeout(()=>{
+    console.log("login");
+  },2000)
+ }
+
+ function getdata(){
+  setTimeout(() => {
+    console.log("fetching");
+  }, 200);
+ }
+ 
+register();
+login();
+getdata();
+
+console:- 
+fetching
+register end
+login
+
+
+callback hell
+
+
+// 💥 Callback Hell Example in JavaScript
+
+function register(cb) {
+  setTimeout(() => {
+    console.log("User registered");
+    cb();
+  }, 1000);
+}
+
+function sendEmail(cb) {
+  setTimeout(() => {
+    console.log("Email sent");
+    cb();
+  }, 1000);
+}
+
+function login(cb) {
+  setTimeout(() => {
+    console.log("User logged in");
+    cb();
+  }, 1000);
+}
+
+function getData(cb) {
+  setTimeout(() => {
+    console.log("Data retrieved");
+    cb();
+  }, 1000);
+}
+
+function displayData() {
+  setTimeout(() => {
+    console.log("Data displayed");
+  }, 1000);
+}
+
+// ⚠️ Callback Hell in action
+register(() => {
+  sendEmail(() => {
+    login(() => {
+      getData(() => {
+        displayData();
+      });
+    });
+  });
+});
+
+
+console:- 
+User registered
+Email sent
+User logged in
+Data retrieved
+Data displayed
+
+
+Promise:- three stages 1. resolve 2. Pending 3. reject
+
+                PROMISE
+                   |
+        _____________________
+        |          |        |
+      resolve    PENDING   Reject
+
+
+const pr=new Promise((resolve,reject)=>{
+  // resolve("register");
+  reject("error");
+});
+pr.then(()=>{
+  console.log("resgister");
+}).then(()=>{
+  console.log("login");
+  reject("error");
+}).catch((err)=>{
+  console.log(err);
+})
+
+yha dikkat hai dhyan se karo agr implement karni hai toh sahi
+
+function register() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+    console.log("user registered");
+    resolve();
+  }, 1000);
+    
+  })
+}
+
+function sendEmail() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+    console.log("Email sent");
+    resolve();
+  }, 1000);
+  })
+}
+
+function login() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      console.log("User logged in");
+      resolve();
+    }, 1000);
+  });
+}
+
+function getData() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      console.log("Data retrieved");
+      resolve();
+  }, 1000);
+})
+}
+
+function displayData() {
+  return new Promise((resolve,reject)=>{
+    setTimeout(() => {
+      console.log("Data displayed🤣🤣");
+      reject("fun try error💀");
+    }, 1000);
+  });
+}
+
+// register()
+// .then(sendEmail)
+// .then(login)
+// .then(getData)
+// .then(displayData)
+
+async function f1(){
+  try{
+    await register();
+    await sendEmail();
+    await login();
+    await getData();
+    await displayData();
+  }catch(err){
+    console.log(err);
+  }
+}
+f1();
+
+
+
+EVENT HANDLING
+
+how events loop work?
