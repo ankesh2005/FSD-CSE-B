@@ -9,7 +9,7 @@ function register(cb) {
 }
 
 function sendEmail(cb) {
-  setTimeout(() => {
+  setTimeout(() => { 
     console.log("Email sent");
     cb();
   }, 1000);
