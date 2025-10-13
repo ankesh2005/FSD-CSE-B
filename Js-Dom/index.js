@@ -1,0 +1,12 @@
+const image=document.createElement('img');
+image.src="https://th.bing.com/th/id/OIP.-z0DA20cOrqiC-WaKXyvfgAAAA?w=145&h=187&c=7&r=0&o=7&cb=12&dpr=1.3&pid=1.7&rm=3";
+image.width=150;
+image.height=150;
+const h4=document.createElement('h4');
+h4.innerText="Price: 125/-";
+const child=document.createElement('div');
+child.className="card";
+child.appendChild(image);
+child.appendChild(h4);
+const parent=document.getElementById('root');
+parent.appendChild(child);
