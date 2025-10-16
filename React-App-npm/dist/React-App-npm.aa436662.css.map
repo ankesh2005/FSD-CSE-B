@@ -1,0 +1,1 @@
+{"mappings":"AAAA","sources":["style.css"],"sourcesContent":[".card{\r\n  width: 400px;\r\n  height: 400px;\r\n  background: gold;\r\n  color: red;\r\n  border: 2px solid blue;\r\n  border-radius: 10px;\r\n  padding: 20px;\r\n  margin-bottom: 10px;\r\n  text-align: center;\r\n}"],"names":[],"version":3,"file":"React-App-npm.aa436662.css.map","sourceRoot":"/__parcel_source_root/"}
